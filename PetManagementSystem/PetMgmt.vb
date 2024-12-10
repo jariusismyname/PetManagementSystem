@@ -591,11 +591,84 @@ Public Class PetMgmt
             MessageBox.Show("No records found to update.")
         End If
     End Sub
+    ' Declare a variable to store the original total value
+    Private originalTotal As Decimal
+
+    Private Sub CheckboxYes_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBoxyes.CheckedChanged
+        ' Ensure txttotal has a valid numeric value
+        If Not Decimal.TryParse(txtTotal.Text, originalTotal) Then
+            MessageBox.Show("Invalid total value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
+
+        If CheckBoxyes.Checked Then
+            ' Apply 20% discount
+            Dim discountedTotal As Decimal = originalTotal * 0.8D
+            txtTotal.Text = discountedTotal.ToString("F2") ' Format to 2 decimal places
+        Else
+            Dim undiscountedTotal As Decimal = originalTotal * 1.25D
+            txtTotal.Text = undiscountedTotal.ToString("F2") ' Format to 2 decimal places
+
+        End If
+    End Sub
+
+    Private Sub txtpayment_TextChanged(sender As Object, e As EventArgs) Handles txtPayment.TextChanged
+        ' Calculate and display the change whenever txtpayment value changes
+        Dim payment As Decimal
+        Dim total As Decimal
+
+        ' Ensure txtpayment and txttotal have valid numeric values
+        If Decimal.TryParse(txtPayment.Text, payment) AndAlso Decimal.TryParse(txtTotal.Text, total) Then
+            Dim change As Decimal = payment - total
+            txtchange.Text = change.ToString("F2") ' Format to 2 decimal places
+        Else
+            txtchange.Text = "0.00" ' Reset change to 0 if input is invalid
+        End If
+    End Sub
+
+    Private Sub ComputeTotal()
+        ' Define connection string
+        'Dim connectionString As String = "Data Source=DESKTOP-D5V36F0\SQLEXPRESS;Initial Catalog=PetMgmt;Integrated Security=True;Connect Timeout=30;Encrypt=False"
+
+        ' SQL query to get the latest values and calculate the total
+        Dim query As String = "SELECT TOP 1 (Nights * Price * Number) AS Total 
+                           FROM PetMgmtSystem 
+                           ORDER BY ReservationID  DESC" ' Replace TransactionId with the appropriate column for "latest"
+
+        Using connection As New SqlConnection(connectionString)
+            Try
+                ' Open the connection
+                connection.Open()
+
+                ' Create the SQL command
+                Using command As New SqlCommand(query, connection)
+                    ' Execute the query and get the result
+                    Dim total As Object = command.ExecuteScalar()
+
+                    ' Check if the result is not null
+                    If total IsNot Nothing AndAlso IsNumeric(total) Then
+                        ' Display the total in txttotal textbox
+                        txtTotal.Text = total.ToString()
+                    Else
+                        MessageBox.Show("No data found or computation failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
+                End Using
+
+            Catch ex As Exception
+                ' Handle exceptions
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Finally
+                ' Close the connection
+                connection.Close()
+            End Try
+        End Using
+    End Sub
 
     Private Sub Button15_Click(sender As Object, e As EventArgs) Handles Button15.Click
         GetLatestServiceID()
         UpdateLatestPetService()
         'txtTotal.Text = nights.Text
+        ComputeTotal()
     End Sub
 
     Private Sub PNLAGAIN_Paint(sender As Object, e As PaintEventArgs) Handles PNLAGAIN.Paint
@@ -1086,7 +1159,7 @@ Public Class PetMgmt
 
     End Sub
 
-    Private Sub txtPayment_TextChanged(sender As Object, e As EventArgs) Handles txtPayment.TextChanged
+    'Private Sub txtPayment_TextChanged(sender As Object, e As EventArgs) Handles txtPayment.TextChanged
 
-    End Sub
+    'End Sub
 End Class

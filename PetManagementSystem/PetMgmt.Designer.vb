@@ -217,7 +217,6 @@ Partial Class PetMgmt
         Me.txtchange = New System.Windows.Forms.Label()
         Me.txtTotal = New System.Windows.Forms.Label()
         Me.CheckBoxyes = New System.Windows.Forms.CheckBox()
-        Me.CheckBoxNo = New System.Windows.Forms.CheckBox()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -2175,7 +2174,6 @@ Partial Class PetMgmt
         'Panel42
         '
         Me.Panel42.BackColor = System.Drawing.Color.White
-        Me.Panel42.Controls.Add(Me.CheckBoxNo)
         Me.Panel42.Controls.Add(Me.CheckBoxyes)
         Me.Panel42.Controls.Add(Me.txtTotal)
         Me.Panel42.Controls.Add(Me.txtchange)
@@ -2357,24 +2355,13 @@ Partial Class PetMgmt
         Me.CheckBoxyes.Text = "Yes"
         Me.CheckBoxyes.UseVisualStyleBackColor = True
         '
-        'CheckBoxNo
-        '
-        Me.CheckBoxNo.AutoSize = True
-        Me.CheckBoxNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxNo.Location = New System.Drawing.Point(232, 178)
-        Me.CheckBoxNo.Name = "CheckBoxNo"
-        Me.CheckBoxNo.Size = New System.Drawing.Size(78, 42)
-        Me.CheckBoxNo.TabIndex = 25
-        Me.CheckBoxNo.Text = "No"
-        Me.CheckBoxNo.UseVisualStyleBackColor = True
-        '
         'PetMgmt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1278, 684)
-        Me.Controls.Add(Me.PNLINFO)
         Me.Controls.Add(Me.PNLPAYMENT)
+        Me.Controls.Add(Me.PNLINFO)
         Me.Controls.Add(Me.PNLMAIN)
         Me.Controls.Add(Me.PNLPICKUP)
         Me.Controls.Add(Me.PNLBREED)
@@ -2677,7 +2664,6 @@ Partial Class PetMgmt
     Friend WithEvents Label59 As Label
     Friend WithEvents Label60 As Label
     Friend WithEvents btnPayment As Button
-    Friend WithEvents CheckBoxNo As CheckBox
     Friend WithEvents CheckBoxyes As CheckBox
     Friend WithEvents txtTotal As Label
     Friend WithEvents txtchange As Label
