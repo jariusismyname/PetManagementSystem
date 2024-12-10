@@ -201,7 +201,9 @@ Partial Class PetMgmt
         Me.Label52 = New System.Windows.Forms.Label()
         Me.PNLPAYMENT = New System.Windows.Forms.Panel()
         Me.Panel42 = New System.Windows.Forms.Panel()
-        Me.Label55 = New System.Windows.Forms.Label()
+        Me.CheckBoxyes = New System.Windows.Forms.CheckBox()
+        Me.txtTotal = New System.Windows.Forms.Label()
+        Me.txtchange = New System.Windows.Forms.Label()
         Me.Label57 = New System.Windows.Forms.Label()
         Me.Label58 = New System.Windows.Forms.Label()
         Me.txtPayment = New System.Windows.Forms.TextBox()
@@ -209,14 +211,13 @@ Partial Class PetMgmt
         Me.Label60 = New System.Windows.Forms.Label()
         Me.btnPayment = New System.Windows.Forms.Button()
         Me.Panel40 = New System.Windows.Forms.Panel()
-        Me.Label54 = New System.Windows.Forms.Label()
-        Me.Button40 = New System.Windows.Forms.Button()
         Me.Panel39 = New System.Windows.Forms.Panel()
         Me.Label56 = New System.Windows.Forms.Label()
         Me.Panel41 = New System.Windows.Forms.Panel()
-        Me.txtchange = New System.Windows.Forms.Label()
-        Me.txtTotal = New System.Windows.Forms.Label()
-        Me.CheckBoxyes = New System.Windows.Forms.CheckBox()
+        Me.Label55 = New System.Windows.Forms.Label()
+        Me.Button40 = New System.Windows.Forms.Button()
+        Me.Label54 = New System.Windows.Forms.Label()
+        Me.DataGridViewPetMgmtSystem = New System.Windows.Forms.DataGridView()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -264,6 +265,7 @@ Partial Class PetMgmt
         Me.Panel42.SuspendLayout()
         Me.Panel39.SuspendLayout()
         Me.Panel41.SuspendLayout()
+        CType(Me.DataGridViewPetMgmtSystem, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
@@ -2005,6 +2007,7 @@ Partial Class PetMgmt
         '
         'PNLADMIN
         '
+        Me.PNLADMIN.Controls.Add(Me.DataGridViewPetMgmtSystem)
         Me.PNLADMIN.Controls.Add(Me.Panel34)
         Me.PNLADMIN.Controls.Add(Me.Panel38)
         Me.PNLADMIN.Controls.Add(Me.Label29)
@@ -2068,7 +2071,7 @@ Partial Class PetMgmt
         '
         Me.Label29.AutoSize = True
         Me.Label29.Font = New System.Drawing.Font("Microsoft YaHei", 27.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label29.Location = New System.Drawing.Point(494, 161)
+        Me.Label29.Location = New System.Drawing.Point(512, 99)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(213, 48)
         Me.Label29.TabIndex = 12
@@ -2077,7 +2080,7 @@ Partial Class PetMgmt
         'Panel35
         '
         Me.Panel35.Controls.Add(Me.lblTotalRevenue)
-        Me.Panel35.Location = New System.Drawing.Point(419, 351)
+        Me.Panel35.Location = New System.Drawing.Point(433, 228)
         Me.Panel35.Name = "Panel35"
         Me.Panel35.Size = New System.Drawing.Size(409, 125)
         Me.Panel35.TabIndex = 10
@@ -2095,7 +2098,7 @@ Partial Class PetMgmt
         'Panel36
         '
         Me.Panel36.Controls.Add(Me.lblMostOrderedCustomer)
-        Me.Panel36.Location = New System.Drawing.Point(849, 341)
+        Me.Panel36.Location = New System.Drawing.Point(856, 225)
         Me.Panel36.Name = "Panel36"
         Me.Panel36.Size = New System.Drawing.Size(396, 125)
         Me.Panel36.TabIndex = 11
@@ -2113,7 +2116,7 @@ Partial Class PetMgmt
         'Panel37
         '
         Me.Panel37.Controls.Add(Me.lblNumberOfCustomers)
-        Me.Panel37.Location = New System.Drawing.Point(56, 351)
+        Me.Panel37.Location = New System.Drawing.Point(64, 226)
         Me.Panel37.Name = "Panel37"
         Me.Panel37.Size = New System.Drawing.Size(290, 125)
         Me.Panel37.TabIndex = 9
@@ -2132,7 +2135,7 @@ Partial Class PetMgmt
         '
         Me.Label28.AutoSize = True
         Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label28.Location = New System.Drawing.Point(822, 305)
+        Me.Label28.Location = New System.Drawing.Point(829, 189)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(426, 33)
         Me.Label28.TabIndex = 8
@@ -2142,7 +2145,7 @@ Partial Class PetMgmt
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(463, 308)
+        Me.Label12.Location = New System.Drawing.Point(477, 185)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(256, 33)
         Me.Label12.TabIndex = 7
@@ -2152,7 +2155,7 @@ Partial Class PetMgmt
         '
         Me.Label52.AutoSize = True
         Me.Label52.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label52.Location = New System.Drawing.Point(3, 305)
+        Me.Label52.Location = New System.Drawing.Point(17, 182)
         Me.Label52.Name = "Label52"
         Me.Label52.Size = New System.Drawing.Size(382, 33)
         Me.Label52.TabIndex = 6
@@ -2188,15 +2191,36 @@ Partial Class PetMgmt
         Me.Panel42.Size = New System.Drawing.Size(609, 491)
         Me.Panel42.TabIndex = 22
         '
-        'Label55
+        'CheckBoxyes
         '
-        Me.Label55.AutoSize = True
-        Me.Label55.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label55.Location = New System.Drawing.Point(63, 104)
-        Me.Label55.Name = "Label55"
-        Me.Label55.Size = New System.Drawing.Size(492, 33)
-        Me.Label55.TabIndex = 21
-        Me.Label55.Text = "Please Provide payment information:"
+        Me.CheckBoxyes.AutoSize = True
+        Me.CheckBoxyes.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBoxyes.Location = New System.Drawing.Point(41, 177)
+        Me.CheckBoxyes.Name = "CheckBoxyes"
+        Me.CheckBoxyes.Size = New System.Drawing.Size(93, 42)
+        Me.CheckBoxyes.TabIndex = 24
+        Me.CheckBoxyes.Text = "Yes"
+        Me.CheckBoxyes.UseVisualStyleBackColor = True
+        '
+        'txtTotal
+        '
+        Me.txtTotal.AutoSize = True
+        Me.txtTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 50.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTotal.Location = New System.Drawing.Point(35, 44)
+        Me.txtTotal.Name = "txtTotal"
+        Me.txtTotal.Size = New System.Drawing.Size(261, 76)
+        Me.txtTotal.TabIndex = 23
+        Me.txtTotal.Text = "txtTotal"
+        '
+        'txtchange
+        '
+        Me.txtchange.AutoSize = True
+        Me.txtchange.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtchange.Location = New System.Drawing.Point(40, 403)
+        Me.txtchange.Name = "txtchange"
+        Me.txtchange.Size = New System.Drawing.Size(166, 38)
+        Me.txtchange.TabIndex = 22
+        Me.txtchange.Text = "txtChange"
         '
         'Label57
         '
@@ -2269,27 +2293,6 @@ Partial Class PetMgmt
         Me.Panel40.Size = New System.Drawing.Size(1278, 34)
         Me.Panel40.TabIndex = 55
         '
-        'Label54
-        '
-        Me.Label54.AutoSize = True
-        Me.Label54.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label54.Location = New System.Drawing.Point(15, 141)
-        Me.Label54.Name = "Label54"
-        Me.Label54.Size = New System.Drawing.Size(47, 16)
-        Me.Label54.TabIndex = 43
-        Me.Label54.Text = "BACK"
-        '
-        'Button40
-        '
-        Me.Button40.BackgroundImage = Global.PetManagementSystem.My.Resources.Resources.undo
-        Me.Button40.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button40.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button40.Location = New System.Drawing.Point(17, 101)
-        Me.Button40.Name = "Button40"
-        Me.Button40.Size = New System.Drawing.Size(45, 40)
-        Me.Button40.TabIndex = 42
-        Me.Button40.UseVisualStyleBackColor = True
-        '
         'Panel39
         '
         Me.Panel39.BackColor = System.Drawing.Color.DarkBlue
@@ -2324,36 +2327,45 @@ Partial Class PetMgmt
         Me.Panel41.TabIndex = 54
         Me.Panel41.Visible = False
         '
-        'txtchange
+        'Label55
         '
-        Me.txtchange.AutoSize = True
-        Me.txtchange.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtchange.Location = New System.Drawing.Point(40, 403)
-        Me.txtchange.Name = "txtchange"
-        Me.txtchange.Size = New System.Drawing.Size(166, 38)
-        Me.txtchange.TabIndex = 22
-        Me.txtchange.Text = "txtChange"
+        Me.Label55.AutoSize = True
+        Me.Label55.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label55.Location = New System.Drawing.Point(63, 104)
+        Me.Label55.Name = "Label55"
+        Me.Label55.Size = New System.Drawing.Size(492, 33)
+        Me.Label55.TabIndex = 21
+        Me.Label55.Text = "Please Provide payment information:"
         '
-        'txtTotal
+        'Button40
         '
-        Me.txtTotal.AutoSize = True
-        Me.txtTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 50.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTotal.Location = New System.Drawing.Point(35, 44)
-        Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Size = New System.Drawing.Size(261, 76)
-        Me.txtTotal.TabIndex = 23
-        Me.txtTotal.Text = "txtTotal"
+        Me.Button40.BackgroundImage = Global.PetManagementSystem.My.Resources.Resources.undo
+        Me.Button40.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button40.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button40.Location = New System.Drawing.Point(17, 101)
+        Me.Button40.Name = "Button40"
+        Me.Button40.Size = New System.Drawing.Size(45, 40)
+        Me.Button40.TabIndex = 42
+        Me.Button40.UseVisualStyleBackColor = True
         '
-        'CheckBoxyes
+        'Label54
         '
-        Me.CheckBoxyes.AutoSize = True
-        Me.CheckBoxyes.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBoxyes.Location = New System.Drawing.Point(41, 177)
-        Me.CheckBoxyes.Name = "CheckBoxyes"
-        Me.CheckBoxyes.Size = New System.Drawing.Size(93, 42)
-        Me.CheckBoxyes.TabIndex = 24
-        Me.CheckBoxyes.Text = "Yes"
-        Me.CheckBoxyes.UseVisualStyleBackColor = True
+        Me.Label54.AutoSize = True
+        Me.Label54.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label54.Location = New System.Drawing.Point(15, 141)
+        Me.Label54.Name = "Label54"
+        Me.Label54.Size = New System.Drawing.Size(47, 16)
+        Me.Label54.TabIndex = 43
+        Me.Label54.Text = "BACK"
+        '
+        'DataGridViewPetMgmtSystem
+        '
+        Me.DataGridViewPetMgmtSystem.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataGridViewPetMgmtSystem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridViewPetMgmtSystem.Location = New System.Drawing.Point(69, 380)
+        Me.DataGridViewPetMgmtSystem.Name = "DataGridViewPetMgmtSystem"
+        Me.DataGridViewPetMgmtSystem.Size = New System.Drawing.Size(1146, 246)
+        Me.DataGridViewPetMgmtSystem.TabIndex = 45
         '
         'PetMgmt
         '
@@ -2361,6 +2373,8 @@ Partial Class PetMgmt
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1278, 684)
         Me.Controls.Add(Me.PNLPAYMENT)
+        Me.Controls.Add(Me.PNLLOGIN)
+        Me.Controls.Add(Me.PNLADMIN)
         Me.Controls.Add(Me.PNLINFO)
         Me.Controls.Add(Me.PNLMAIN)
         Me.Controls.Add(Me.PNLPICKUP)
@@ -2369,11 +2383,9 @@ Partial Class PetMgmt
         Me.Controls.Add(Me.PNLWEIGHT)
         Me.Controls.Add(Me.PNLPRINT)
         Me.Controls.Add(Me.PNLNUMBER)
-        Me.Controls.Add(Me.PNLLOGIN)
         Me.Controls.Add(Me.PNLSCHEDULE)
         Me.Controls.Add(Me.PNLPET)
         Me.Controls.Add(Me.PNLNIGHTS)
-        Me.Controls.Add(Me.PNLADMIN)
         Me.Controls.Add(Me.PNLAGAIN)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "PetMgmt"
@@ -2467,6 +2479,7 @@ Partial Class PetMgmt
         Me.Panel39.PerformLayout()
         Me.Panel41.ResumeLayout(False)
         Me.Panel41.PerformLayout()
+        CType(Me.DataGridViewPetMgmtSystem, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2667,4 +2680,5 @@ Partial Class PetMgmt
     Friend WithEvents CheckBoxyes As CheckBox
     Friend WithEvents txtTotal As Label
     Friend WithEvents txtchange As Label
+    Friend WithEvents DataGridViewPetMgmtSystem As DataGridView
 End Class

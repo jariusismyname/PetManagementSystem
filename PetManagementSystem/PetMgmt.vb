@@ -625,6 +625,39 @@ Public Class PetMgmt
             txtchange.Text = "0.00" ' Reset change to 0 if input is invalid
         End If
     End Sub
+    Private Sub LoadDataIntoDataGridViewPetMgmtSystem()
+        ' Define the connection string (update if necessary)
+        'Dim connectionString As String = "Data Source=DESKTOP-D5V36F0\SQLEXPRESS;Initial Catalog=PetMgmt;Integrated Security=True;Connect Timeout=30;Encrypt=False"
+
+        ' Define the SQL query to fetch data
+        Dim query As String = "SELECT * FROM PetMgmtSystem"
+
+        ' Create a SqlConnection
+        Using connection As New SqlConnection(connectionString)
+            Try
+                ' Open the connection
+                connection.Open()
+
+                ' Create a SqlDataAdapter to fetch data
+                Using adapter As New SqlDataAdapter(query, connection)
+                    ' Create a DataTable to hold the data
+                    Dim dataTable As New DataTable()
+
+                    ' Fill the DataTable with data from the database
+                    adapter.Fill(dataTable)
+
+                    ' Set the DataGridView's DataSource to the DataTable
+                    DataGridViewPetMgmtSystem.DataSource = dataTable
+                End Using
+            Catch ex As Exception
+                ' Handle any exceptions that occur
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Finally
+                ' Ensure the connection is closed
+                connection.Close()
+            End Try
+        End Using
+    End Sub
 
     Private Sub ComputeTotal()
         ' Define connection string
@@ -791,7 +824,9 @@ Public Class PetMgmt
             MessageBox.Show("LOGIN SUCCESSFULL")
             TXTPASSWORD.Text = ""
             TXTUSERNAME.Text = ""
+            LoadDataIntoDataGridViewPetMgmtSystem()
             FETCHDATA()
+
         Else
             MessageBox.Show("WRONG INPUT")
         End If
@@ -1140,7 +1175,7 @@ Public Class PetMgmt
 
     Private Sub btnPayment_Click(sender As Object, e As EventArgs) Handles btnPayment.Click
         GetLatestServiceID()
-
+        UpdateDiscountColumn()
         UpdateLatestPayment()
         PRINT()
 
@@ -1157,6 +1192,90 @@ Public Class PetMgmt
 
     Private Sub txtDiscount_TextChanged(sender As Object, e As EventArgs)
 
+    End Sub
+    'Private Sub UpdateDiscountColumn()
+    '    ' Define the connection string
+    '    'Dim connectionString As String = "Data Source=DESKTOP-D5V36F0\SQLEXPRESS;Initial Catalog=PetMgmt;Integrated Security=True;Connect Timeout=30;Encrypt=False"
+
+    '    ' SQL query to update the Discount column for the latest ReservationID
+    '    Dim query As String = "UPDATE PetMgmtSystem " &
+    '                      "SET Discount = @Discount " &
+    '                      "WHERE ReservationID = (SELECT TOP 1 ReservationID FROM PetMgmtSystem ORDER BY ReservationID DESC)"
+
+    '    Using connection As New SqlConnection(connectionString)
+    '        Try
+    '            ' Open the connection
+    '            connection.Open()
+
+    '            ' Create a SqlCommand
+    '            Using command As New SqlCommand(query, connection)
+    '                ' Check if the checkbox is checked
+    '                Dim discountValue As String = If(CheckBoxyes.Checked, "YES", DBNull.Value.ToString())
+
+    '                ' Add parameter to prevent SQL injection
+    '                command.Parameters.AddWithValue("@Discount", discountValue)
+
+    '                ' Execute the update command
+    '                Dim rowsAffected As Integer = command.ExecuteNonQuery()
+
+    '                ' Notify the user of the operation's result
+    '                If rowsAffected > 0 Then
+    '                    MessageBox.Show("Discount column updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    '                Else
+    '                    MessageBox.Show("No rows were updated. Ensure there is a valid ReservationID.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+    '                End If
+    '            End Using
+
+    '        Catch ex As Exception
+    '            ' Handle exceptions
+    '            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '        Finally
+    '            ' Close the connection
+    '            connection.Close()
+    '        End Try
+    '    End Using
+    'End Sub
+    Private Sub UpdateDiscountColumn()
+        ' Define the connection string (update if necessary)
+        'Dim connectionString As String = "Data Source=DESKTOP-D5V36F0\SQLEXPRESS;Initial Catalog=PetMgmt;Integrated Security=True;Connect Timeout=30;Encrypt=False"
+
+        ' Determine the value to set for the Discount column
+        Dim discountValue As String = If(CheckBoxyes.Checked, "YES", "NO")
+
+        ' SQL query to update the Discount column for the last ReservationID
+        Dim query As String = "UPDATE PetMgmtSystem 
+                           SET Discount = @Discount 
+                           WHERE ReservationID = (SELECT MAX(ReservationID) FROM PetMgmtSystem)"
+
+        Using connection As New SqlConnection(connectionString)
+            Try
+                ' Open the connection
+                connection.Open()
+
+                ' Create a SqlCommand to execute the update
+                Using command As New SqlCommand(query, connection)
+                    ' Add a parameter to the command
+                    command.Parameters.AddWithValue("@Discount", discountValue)
+
+                    ' Execute the command
+                    Dim rowsAffected As Integer = command.ExecuteNonQuery()
+
+                    ' Notify the user if the update was successful
+                    If rowsAffected > 0 Then
+                        MessageBox.Show("Discount column updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Else
+                        MessageBox.Show("No rows were updated. Please check your data.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    End If
+                End Using
+
+            Catch ex As Exception
+                ' Handle any exceptions that occur
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Finally
+                ' Ensure the connection is closed
+                connection.Close()
+            End Try
+        End Using
     End Sub
 
     'Private Sub txtPayment_TextChanged(sender As Object, e As EventArgs) Handles txtPayment.TextChanged
