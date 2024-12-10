@@ -595,7 +595,7 @@ Public Class PetMgmt
     Private Sub Button15_Click(sender As Object, e As EventArgs) Handles Button15.Click
         GetLatestServiceID()
         UpdateLatestPetService()
-        txtTotal.Text = nights.Text
+        'txtTotal.Text = nights.Text
     End Sub
 
     Private Sub PNLAGAIN_Paint(sender As Object, e As PaintEventArgs) Handles PNLAGAIN.Paint
@@ -1020,9 +1020,8 @@ Public Class PetMgmt
     Private Sub UpdateLatestPayment()
         ' Check if any of the required text boxes are empty
         If String.IsNullOrWhiteSpace(txtTotal.Text) OrElse
-       String.IsNullOrWhiteSpace(txtDiscount.Text) OrElse
-       String.IsNullOrWhiteSpace(txtPayment.Text) OrElse
-       String.IsNullOrWhiteSpace(txtChange.Text) Then
+            String.IsNullOrWhiteSpace(txtPayment.Text) OrElse
+       String.IsNullOrWhiteSpace(txtchange.Text) Then
             MessageBox.Show("Please fill in all required fields.")
             Exit Sub
         End If
@@ -1031,15 +1030,15 @@ Public Class PetMgmt
         Dim latestServiceID As Integer = GetLatestServiceID()
 
         If latestServiceID > 0 Then
-            Dim query As String = "UPDATE PetMgmtSystem SET Total = @Total, Payment = @Payment, Change = @Change, Discount = @Discount WHERE ReservationID = @ReservationID"
-
+            'Dim query As String = "UPDATE PetMgmtSystem SET Total = @Total, Payment = @Payment, Change = @Change, Discount = @Discount WHERE ReservationID = @ReservationID"
+            Dim query As String = "UPDATE PetMgmtSystem SET Total = @Total, Payment = @Payment, Change = @Change  WHERE ReservationID = @ReservationID"
             Using connection As New SqlConnection(connectionString)
                 connection.Open()
 
                 Using updateCommand As New SqlCommand(query, connection)
                     ' Add parameters to the SqlCommand
                     updateCommand.Parameters.AddWithValue("@Total", txtTotal.Text)
-                    updateCommand.Parameters.AddWithValue("@Discount", txtDiscount.Text)
+                    'updateCommand.Parameters.AddWithValue("@Discount", txtDiscount.Text)
                     updateCommand.Parameters.AddWithValue("@Change", txtChange.Text)
 
                     ' Convert age to integer
@@ -1083,7 +1082,7 @@ Public Class PetMgmt
 
     End Sub
 
-    Private Sub txtDiscount_TextChanged(sender As Object, e As EventArgs) Handles txtDiscount.TextChanged
+    Private Sub txtDiscount_TextChanged(sender As Object, e As EventArgs)
 
     End Sub
 
