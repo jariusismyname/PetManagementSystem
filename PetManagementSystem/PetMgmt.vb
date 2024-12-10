@@ -4,7 +4,7 @@ Imports System.Text
 
 
 Public Class PetMgmt
-    Dim connectionString As String = "Data Source=DESKTOP-D5V36F0\SQLEXPRESS;Initial Catalog=PetMgmt;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"  ' Use correct server name
+    Dim connectionString As String = "Data Source=JARIUS-PC\SQLEXPRESS;Initial Catalog=PetMgmt;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
 
     Private Sub UpdatePetForNullServices(PetNumbers As String)
         Using connection As New SqlConnection(connectionString)
@@ -873,7 +873,7 @@ Public Class PetMgmt
 
     Private Sub PRINT()
 
-        Dim conn As New SqlConnection("Data Source=DESKTOP-D5V36F0\SQLEXPRESS;Initial Catalog=PetMgmt;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+        Dim conn As New SqlConnection("Data Source=JARIUS-PC\SQLEXPRESS;Initial Catalog=PetMgmt;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
         conn.Open()
 
         Dim cmd As New SqlCommand("SELECT * FROM PetMgmtSystem WHERE CustomerName = @CustomerName", conn)
@@ -897,7 +897,7 @@ Public Class PetMgmt
 
     Private Sub Button27_Click_1(sender As Object, e As EventArgs) Handles Button27.Click
         ' Establish database connection
-        Dim connectionString As String = "Data Source=DESKTOP-D5V36F0\SQLEXPRESS;Initial Catalog=PetMgmt;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+        Dim connectionString As String = "Data Source=JARIUS-PC\SQLEXPRESS;Initial Catalog=PetMgmt;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
         Dim connection As New SqlConnection(connectionString)
         connection.Open()  ' Open the connection
 

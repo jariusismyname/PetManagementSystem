@@ -1,0 +1,28 @@
+-- Create a database
+CREATE DATABASE PetMgmt;
+
+-- Use the database
+USE PetMgmt;
+
+-- Create the table
+CREATE TABLE PetMgmtSystem (
+    ReservationID INT IDENTITY(1,1) PRIMARY KEY, -- Auto-incrementing primary key
+    Number INT NULL,
+    Breed VARCHAR(100) NULL,
+    ServiceName VARCHAR(100) NULL,
+    Price DECIMAL(10, 2) NULL,
+    Nights INT NULL,
+    Time TIME NULL,
+    Date DATE NULL,
+    Pickup BIT NULL, -- Assuming Pickup is a boolean (1 for yes, 0 for no)
+    CustomerName VARCHAR(100) NULL,
+    Phone VARCHAR(15) NULL,
+    Address VARCHAR(255) NULL,
+    Age INT NULL,
+    Weight DECIMAL(5, 2) NULL, -- Assuming weight in Kg with 2 decimal places
+    Sitter VARCHAR(100) NULL,
+    Total DECIMAL(10, 2) NULL,
+    Discount DECIMAL(10, 2) NULL,
+    Change DECIMAL(10, 2) NULL,
+    Payment DECIMAL(10, 2) NULL
+);
